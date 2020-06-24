@@ -1,0 +1,1 @@
+export { getScrollableParent } from './scroll'

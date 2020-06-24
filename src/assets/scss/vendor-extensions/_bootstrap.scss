@@ -1,0 +1,298 @@
+@import '../abstracts/variables';
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "dark": $dark,
+  "light": $light,
+  "white": $white,
+  "black": $black
+);
+
+
+.row:before,
+.row:after {
+  display: none !important;
+}
+
+.form-control {
+  border: 1px solid $gray !important;
+
+  &::placeholder {
+    opacity: 0.5 !important;
+  }
+
+  &:focus {
+    box-shadow: 1px 1px 7px 1px rgba(0,0,0,0.175) !important;
+  }
+
+  &.form-control-lg {
+    font-size: inherit !important;
+    min-height: 3rem;
+  }
+}
+
+.input-group-text {
+  background: $light !important;
+}
+
+.btn {
+  border-radius: 3px !important;
+
+  &.btn-lg {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    height: 3rem;
+  }
+
+  &.disabled {
+    opacity: 0.5 !important;
+  }
+
+  &.btn-outline-gray {
+    border: 1px solid $gray;
+
+    &:hover {
+      border-color: $primary;
+
+      * {
+        color: $primary !important;
+      }
+    }
+  }
+
+  &.btn-outline-gray-light {
+    border: 1px solid $gray-light;
+
+    &:hover {
+      border-color: $primary;
+
+      * {
+        color: $primary !important;
+      }
+    }
+  }
+}
+
+.card {
+  .card-header {
+    color: $primary;
+    border-bottom: 1px solid $light;
+
+    .nav-tabs {
+      border-bottom: none !important;
+
+      .nav-link {
+        position: relative;
+        font-family: Poppins, sans-serif !important;
+        font-size: 1.125rem;
+        font-weight: bold;
+        border: none !important;
+        background: inherit !important;
+        color: $gray !important;
+        padding: 0 0 0.25rem 0;
+
+        &.active, &:hover {
+          color: $primary !important;
+          border-bottom: 4px solid $primary !important;
+
+          &:after {
+            content: "";
+            background: $secondary;
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            left: 10%;
+            bottom: 0;
+          }
+        }
+      }
+
+      .nav-item {
+        margin-right: 2.5rem;
+      }
+    }
+  }
+
+  .tabs {
+    .card-header {
+      background-color: inherit;
+      border-bottom: none;
+
+      .card-header-tabs {
+        margin-right: 0;
+        margin-left: 0;
+
+        .nav-link {
+          background: $light;
+          margin-right: 0;
+
+          &.active {
+            &::after {
+              display: none;
+            }
+          }
+
+          &:hover {
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  margin: 0 !important;
+
+  .page-item {
+    .page-link {
+      color: $primary;
+      padding: 5px 8px;
+    }
+
+    &.active {
+      .page-link {
+        background-color: $primary;
+        border-color: $primary;
+      }
+    }
+  }
+}
+
+.tooltip {
+  .tooltip-inner {
+    max-width: 700px;
+  }
+}
+
+.b-toaster {
+  .b-toaster-slot {
+    max-width: 450px !important;
+
+    .b-toast {
+      max-width: 450px !important;
+
+      .toast {
+        max-width: 450px !important;
+      }
+    }
+  }
+}
+
+.dropdown {
+  .dropdown-menu {
+    box-shadow: 0px 3px 6px #0000001a;
+    border-radius: 3px;
+    border: none;
+    padding: 1rem 0;
+    white-space: nowrap;
+
+    .dropdown-item {
+      &:active,
+      &:hover
+      {
+        background-color: $light;
+      }
+    }
+
+    .b-dropdown-form {
+      &:focus {
+        outline: none !important;
+      }
+    }
+  }
+}
+
+.popover {
+  box-shadow: 0px 3px 6px #0000001a !important;
+  border-radius: 3px !important;
+  border: none !important;
+
+  &-tooltip {
+    .arrow {
+      display: none !important;
+    }
+
+    .popover-header {
+      font-family: Lato, sans-serif !important;
+      font-weight: bold;
+      background-color: $white;
+    }
+  }
+
+  .popover-body {
+    max-height: 300px;
+    overflow: auto;
+    padding: 0;
+    color: $dark !important;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $light;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $gray-light;
+    }
+  }
+}
+
+.modal {
+  .modal-dialog {
+    &.modal-xl {
+      max-width: 90vw;
+    }
+  }
+
+  .modal-header {
+    border-bottom: none;
+
+    .modal-title {
+      font-family: Poppins, sans-serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $primary;
+    }
+  }
+
+  .modal-content {
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0px 3px 6px $box-shadow;
+  }
+
+  .modal-footer {
+    border-top: 1px solid $light;
+  }
+}
+
+.dark {
+  .card-header {
+    color: $white;
+
+    .nav-tabs {
+      .nav-link {
+        color: $light !important;
+
+        &.active, &:hover {
+          color: $white !important;
+
+          &:after {
+            background: $white;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,32 +1,52 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+  <div id="app" class="app">
+    <section class="app-links">
+      <router-link tag="button" :to="{ name: 'TableView' }" active-class="active" class="btn btn-outline-dark" exact>
+        First Question
+      </router-link>
+
+      <router-link tag="button" :to="{ name: 'InfiniteScroller' }" active-class="active" class="btn btn-outline-dark">
+        Second Question
+      </router-link>
+    </section>
+
+    <section class="app-questions">
+      <router-view />
+    </section>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="scss" scoped>
+.app {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 2rem;
 
-#nav {
-  padding: 30px;
+  .app-links {
+    flex: 0 1 auto;
+    margin-bottom: 2rem;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    :not(:last-child) {
+      margin-right: 1rem;
     }
   }
+
+  .app-questions {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column;
+    width: 80%;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+</style>
+
+<style lang="scss">
+html,
+body {
+  height: 100%;
+  font-size: 16px;
 }
 </style>
