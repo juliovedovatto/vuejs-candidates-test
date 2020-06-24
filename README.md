@@ -2,6 +2,8 @@
 
 ## Project setup
 
+Fork this repository to your GitHub account.
+
 Clone this repository to your local environment and run the following:
 
 ```
@@ -10,7 +12,7 @@ npm install
 
 ### Starting the project
 
-To start the project, navigated to your local repository, and run:
+To start the project, navigate to your local repository, and run:
 
 ```
 npm run serve
@@ -24,7 +26,7 @@ App running at:
 - Network: http://xxx.xxx.xx.xx:8080/
 ```
 
-### Starting the interview test
+## Starting the interview test
 
 There will be 2 questions for this interview test.
 
@@ -57,3 +59,13 @@ To see the error again, refresh the page and switch back to the "TV Shows" tab.
 #### Expected outcome
 
 The "TV Shows" tab content should display properly with all the items shown at initial load with the correct height of the elements in each row.
+
+## Completing the interview test
+
+Once the alloted time is up, create a branch titled `interview_test_first_name_last_name_initial` for all your work, **finished or not**, and send your GitHub's branch link to us for review.
+
+An example for a branch title would be `interview_test_john_d`.
+
+We will be in touch shortly after.
+
+Best of luck!
