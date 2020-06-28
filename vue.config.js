@@ -2,7 +2,14 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        prependData: '@import "~@/assets/scss/abstracts/variables.scss";'
+        prependData: (() =>
+          [
+            '~@/assets/scss/abstracts/variables.scss',
+            '~@/assets/scss/abstracts/functions.scss',
+            '~@/assets/scss/abstracts/mixins.scss'
+          ]
+            .map(path => `@import "${path}";`)
+            .join(''))()
       }
     }
   },
