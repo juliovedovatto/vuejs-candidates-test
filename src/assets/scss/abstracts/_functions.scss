@@ -1,0 +1,24 @@
+/**
+ * this function will force unit to a value. Defaults to "px"
+ * If $value is already using a unit, by default will not set desired unit.
+ * The $force arg will force the desired unit, regardless $value  contains a unit or not.
+ */
+@function set-unit($value, $unit: 'px', $force: false) {
+  @if $force {
+    $value: strip-unit($value);
+  }
+
+  @return if(unitless($value), #{$value}#{$unit}, $value);
+}
+
+/**
+ * this function will strip unit from a value.
+ * Example: strip-unit(10px) => 10
+ */
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

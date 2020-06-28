@@ -1,0 +1,18 @@
+/**
+ * position sticky mixin.
+ * this mixin will add to selected element sticky position. It is possible to inform positioning and z-index
+ * Examples:
+ * @include sticky()
+ * @include sticky(0, 0, 0, 0, 10)
+ * @include sticky($top: 0, $left: 0)
+ * @include sticky($top: 0, $left: 0, $z-index: 10)
+ */
+@mixin sticky($top: false, $right: false, $bottom: false, $left: false, $z-index: false) {
+  position: sticky;
+
+  @if $top { top: #{set-unit($top)}; }
+  @if $right { right: #{set-unit($right)}; }
+  @if $bottom { bottom: #{set-unit($bottom)}; }
+  @if $left { left: #{set-unit($left)}; }
+  @if $z-index { z-index: #{$z-index}; }
+}
