@@ -943,6 +943,8 @@ export default {
       background-color: $tertiary;
       color: $white;
 
+      @include sticky(0, $z-index: 10);
+
       .sorted-header {
         background-color: $light;
         color: $tertiary;
@@ -957,6 +959,9 @@ export default {
           &:first-child {
             flex: 1 0 250px;
             width: 250px;
+            background-color: $tertiary;
+
+            @include sticky($left: 0, $z-index: 101);
           }
 
           border-top: 1px solid $gray-light;
@@ -1035,6 +1040,9 @@ export default {
             &:first-child {
               flex: 1 0 250px;
               width: 250px;
+              background-color: $white;
+
+              @include sticky($left: 0);
             }
 
             border-top: 1px solid $gray-light;
