@@ -25,41 +25,42 @@
       <div class="movies-column">Genre</div>
     </section>
 
-    <section v-show="isMovies" class="movies">
-      <infinite-scroller :items="allMovies">
-        <template #default="{ item }">
-          <div class="movie">
-            <div class="movie-info">
-              <div class="movie-info--content">{{ item.title }}</div>
+    <div class="movies__container">
+      <section :class="{ movies: true, hidden: !isMovies }">
+        <infinite-scroller :items="allMovies">
+          <template #default="{ item }">
+            <div class="movie">
+              <div class="movie-info">
+                <div class="movie-info--content">{{ item.title }}</div>
+              </div>
+              <div class="movie-info">
+                <div class="movie-info--content">{{ item.description }}</div>
+              </div>
+              <div class="movie-info">
+                <div class="movie-info--content">{{ item.listed_in }}</div>
+              </div>
             </div>
-            <div class="movie-info">
-              <div class="movie-info--content">{{ item.description }}</div>
+          </template>
+        </infinite-scroller>
+      </section>
+      <section :class="{ movies: true, hidden: !isTVShows }">
+        <infinite-scroller :items="allTVShows">
+          <template #default="{ item }">
+            <div class="movie">
+              <div class="movie-info">
+                <div class="movie-info--content">{{ item.title }}</div>
+              </div>
+              <div class="movie-info">
+                <div class="movie-info--content">{{ item.description }}</div>
+              </div>
+              <div class="movie-info">
+                <div class="movie-info--content">{{ item.listed_in }}</div>
+              </div>
             </div>
-            <div class="movie-info">
-              <div class="movie-info--content">{{ item.listed_in }}</div>
-            </div>
-          </div>
-        </template>
-      </infinite-scroller>
-    </section>
-
-    <section v-show="isTVShows" class="movies">
-      <infinite-scroller :items="allTVShows">
-        <template #default="{ item }">
-          <div class="movie">
-            <div class="movie-info">
-              <div class="movie-info--content">{{ item.title }}</div>
-            </div>
-            <div class="movie-info">
-              <div class="movie-info--content">{{ item.description }}</div>
-            </div>
-            <div class="movie-info">
-              <div class="movie-info--content">{{ item.listed_in }}</div>
-            </div>
-          </div>
-        </template>
-      </infinite-scroller>
-    </section>
+          </template>
+        </infinite-scroller>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -162,30 +163,46 @@ export default {
     }
   }
 
-  .movies {
+  .movies__container {
+    position: relative;
     flex: 1 1 auto;
-    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
 
-    .movie {
-      display: flex;
-      color: #32e0c4;
+    .movies {
+      overflow: auto;
+      flex: 1 1 auto;
 
-      .movie-info {
-        flex: 1 1 0px;
+      &.hidden {
+        position: absolute !important;
+        top: -100vw !important;
+        left: -100vw !important;
+        width: 100%;
+        height: 100%;
+      }
+
+      .movie {
         display: flex;
-        align-items: center;
-        padding: 1rem;
+        color: #32e0c4;
 
-        &--content {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
+        .movie-info {
+          flex: 1 1 0px;
+          display: flex;
+          align-items: center;
+          padding: 1rem;
+
+          &--content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+          }
         }
       }
     }
   }
+
 }
 </style>
 
