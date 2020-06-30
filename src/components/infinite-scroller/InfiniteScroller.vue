@@ -38,7 +38,7 @@
 
 <script>
 import { last, isNil, findLastIndex } from 'lodash'
-import { getScrollableParent } from '@/core/html'
+import { getScrollableParent, visibilityObserver } from '@/core/html'
 
 export default {
   name: 'InfiniteScroller',
@@ -72,11 +72,15 @@ export default {
       scroller: null,
       attachedRange: { begin: 0, end: 0 },
       loadingItem: { top: 0, height: 0 },
-      scrolling: false
+      scrolling: false,
+      visibilityObserver: null
     }
   },
   mounted() {
     this.init()
+  },
+  beforeDestroy() {
+    this.visibilityObserver && this.visibilityObserver.disconnect()
   },
   computed: {
     attached() {
@@ -216,6 +220,14 @@ export default {
         this.scroller.style.position = 'relative'
       }
 
+      this.visibilityObserver = new visibilityObserver(this.$el, async entry => {
+        if (!entry.target.classList.contains('.infinite-scroller__ready')) {
+          this.fillInitial()
+          await this.$nextTick()
+          entry.target.classList.add('infinite-scroller__ready')
+        }
+      })
+
       this.itemsMetadata = this.items.map((item, index) => ({
         index,
         height: 0,
@@ -251,6 +263,11 @@ export default {
 <style lang="scss" scoped>
 .infinite-scroller {
   transform: translate3d(0, 0, 0);
+  opacity: 0;
+
+  &__ready {
+    opacity: 1;
+  }
 
   &__scroll-placeholder {
     display: block;
