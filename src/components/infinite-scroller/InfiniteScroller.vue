@@ -220,6 +220,12 @@ export default {
         this.scroller.style.position = 'relative'
       }
 
+      this.itemsMetadata = this.items.map((item, index) => ({
+        index,
+        height: 0,
+        data: item
+      }))
+
       this.visibilityObserver = new visibilityObserver(this.$el, async entry => {
         if (!entry.target.classList.contains('.infinite-scroller__ready')) {
           this.fillInitial()
@@ -228,13 +234,6 @@ export default {
         }
       })
 
-      this.itemsMetadata = this.items.map((item, index) => ({
-        index,
-        height: 0,
-        data: item
-      }))
-
-      this.fillInitial()
       this.isInit = true
     }
   },
