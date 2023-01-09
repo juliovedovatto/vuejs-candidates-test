@@ -23,7 +23,7 @@
     "intersection-observer": "^0.11.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.15",
-    "luxon": "^1.24.1",
+    "luxon": "^1.28.1",
     "numeral": "^2.0.6",
     "progressbar.js": "^1.1.0",
     "select2": "^4.0.13",
